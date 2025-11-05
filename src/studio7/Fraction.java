@@ -1,17 +1,17 @@
 public class Fraction {
-    private int numerator;
-    private int denominator;
+    private double numerator;
+    private double denominator;
 
-    public Fraction(int numeratorInit, int denominatorInit) {
+    public Fraction(double numeratorInit, double denominatorInit) {
         numerator = numeratorInit;
         denominator = denominatorInit;
     }
 
-    public int numerator() {
+    public double numerator() {
         return numerator;
     } 
 
-    public int denominator() {
+    public double denominator() {
         return denominator;
     }
 
@@ -32,22 +32,21 @@ public class Fraction {
     }
 
     public double reciprocal() {
-        numerator = denominator;
-        denominator = numerator;
-        return numerator/denominator;
+        return denominator/numerator;
     }
 
     public double simplify() {
-        int newFraction = 0;
-        for (int i = denominator; i>0; i--) {
+        double newFraction = 0.0;
+        for (int i = (int)denominator; i>0; i--) {
             if (numerator % i == 0 && denominator % i ==0) {
                 numerator = numerator/i;
                 denominator = denominator/i;
+                newFraction = numerator/denominator;
             } else {
-                return numerator/denominator;
+                return newFraction;
             }
         }
-        return numerator/denominator;
+        return newFraction;
     }
     public static void main(String[] args) {
         Fraction f1 = new Fraction(10, 4);
